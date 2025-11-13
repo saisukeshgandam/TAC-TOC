@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <h1>Tic Tac Toe</h1>
+        <div>
+          <span class="user">Logged in as: {{ username }}</span>
+          <a href="/logout" class="btn-logout">Logout</a>
+        </div>
+      </div>
+
+      <div id="game" class="board">
+        <!-- 9 cells -->
+        {% for i in range(9) %}
+          <div class="cell" data-index="{{ i }}"></div>
+        {% endfor %}
+      </div>
+
+      <div class="info">
+        <p id="status">X goes first</p>
+        <button id="reset">Reset</button>
+      </div>
+
+      <p class="note">Local two-player game (both players on same device). Enjoy!</p>
+    </div>
+
+    <script src="/static/game.js"></script>
+  </body>
+</html>

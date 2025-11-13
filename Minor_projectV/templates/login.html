@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - Tic Tac Toe</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Tic Tac Toe - Login</h1>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="flashes">
+            {% for category, message in messages %}
+              <li class="flash {{ category }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+      <form method="post">
+        <label for="username">Username</label>
+        <input id="username" name="username" required placeholder="admin">
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required placeholder="admin">
+
+        <button type="submit">Login</button>
+      </form>
+      <p class="note">Use <strong>admin</strong> / <strong>admin</strong></p>
+    </div>
+  </body>
+</html>

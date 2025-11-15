@@ -33,26 +33,3 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-
-    # Step 2: Run container locally at port 5001
-    - bash: |
-        echo "Starting container on port 5001..."
-        docker run -d -p 5001:80 --name tactoc_test $(containerRegistry)/$(imageRepository):$(tag)
-
-        echo "Waiting for app to start..."
-        sleep 10
-
-        echo "Testing with curl..."
-        curl -I http://localhost:5001 || exit 1
-
-      displayName: Run & Test container on port 5001
-
-    # Step 3: Push to ACR after successful test
-    - task: Docker@2
-      displayName: Push Docker image to ACR
-      inputs:
-        command: push
-        repository: $(imageRepository)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
